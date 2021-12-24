@@ -1,0 +1,60 @@
+<div class="info">
+    <div class="detail">
+        <div class="label">Reviewee Name:</div>
+        <div class="value">{{ target.name }}</div>
+    </div>
+    <div class="detail">
+        <div class="label">Review ID:</div>
+        <div class="value">{{ review.rid }}</div>
+    </div>
+    <div class="detail">
+        <div class="label">Assigned Date:</div>
+        <div class="value">{{ review.assignedDate | date: 'MM/dd/YYYY'}}</div>
+    </div>
+    <div class="detail">
+        <div class="label">Status:</div>
+        <div class="value">{{ review.completed? 'Completed' : 'Open' }}</div>
+    </div>
+    <div class="detail">
+        <div class="label">Participants:</div>
+        <div class="value" *ngIf="!editMode">{{ participants }}</div>
+        <nz-select [hidden]="!editMode" style="width: 300px" nzMode="multiple" nzShowSearch nzAllowClear
+            nzPlaceHolder="Select Employee(s)" [(ngModel)]="selectedValue" [compareWith]="compareFn">
+            <nz-option *ngFor="let e of employees" [nzLabel]="e.name" [nzValue]="e"></nz-option>
+        </nz-select>
+    </div>
+</div>
+<div class="action" *ngIf="isAdmin">
+    <button nz-button nz-popconfirm nzPopconfirmTitle="Are you sure to mark this review as completed?"
+        (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()" nzPopconfirmPlacement="topLeft"
+        *ngIf="!review.completed && !editMode">Mark
+        as Completed</button>
+    <button *ngIf="!review.completed && !editMode" nz-button (click)="switchUpdate()">Update Participants</button>
+    <button *ngIf="editMode" nz-button (click)="saveParticipants()">Save</button>
+
+</div>
+<nz-divider nzText="Feedbacks" nzOrientation="left"></nz-divider>
+<div class="feedbacks">
+    <nz-list *ngIf="feedbacks.length" [nzDataSource]="feedbacks" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+        <ng-template #item let-item>
+            <nz-comment [nzAuthor]="item.from.name" [nzDatetime]="item.completed_date | date: 'MM/dd/YYYY'">
+                <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="item.from.avatar"></nz-avatar>
+                <nz-comment-content>
+                    <p>
+                        {{ item.message }} <br>
+                        <nz-rate [ngModel]="item.rating" nzDisabled></nz-rate>
+                    </p>
+                </nz-comment-content>
+            </nz-comment>
+        </ng-template>
+    </nz-list>
+    <nz-comment style="margin: 10px;" *ngIf="!review.completed">
+        <nz-comment-content class="commentbox">
+            <textarea [(ngModel)]="inputValue" nz-input rows="4"></textarea>
+            <nz-rate [(ngModel)]="inputRating"></nz-rate>
+            <button nz-button nzType="primary" [disabled]="!(inputValue && inputRating)" (click)="saveFeedback()">
+                Add Feedback
+            </button>
+        </nz-comment-content>
+    </nz-comment>
+</div>

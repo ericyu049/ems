@@ -1,0 +1,33 @@
+.info {
+    margin-bottom: 20px;
+    .detail{
+        display: flex;
+        flex-direction: row;
+        .label {
+            width: 200px;
+        }
+    }
+}
+.action{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    button {
+        margin-right: 8px;
+    }
+}
+.feedbacks {
+    max-height: 50vh;
+    overflow-y: scroll;
+    
+    .commentbox {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-left: -12px;
+        button {
+            margin-top: 6px;
+            width: 130px;
+        }
+    }
+}

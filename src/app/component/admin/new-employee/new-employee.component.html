@@ -1,0 +1,74 @@
+<div *ngIf="screen === 0">
+
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm.value)">
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>
+                <span>Name</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input employee name!">
+                <input nz-input id="name" formControlName="name" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="role" nzRequired>
+                <span>Role</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input employee role!">
+                <input nz-input id="role" formControlName="role" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="level" nzRequired>
+                <span>Level</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input employee level!">
+                <input nz-input id="level" type="number" formControlName="level" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="department" nzRequired>
+                <span>Department</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input employee department!">
+                <input nz-input id="department" formControlName="department" />
+            </nz-form-control>
+        </nz-form-item>
+
+
+        <nz-form-item>
+
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="avatar" nzRequired>
+                <span>Avatar</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input employee avatar!">
+                <input nz-input id="avatar" formControlName="avatar" />
+            </nz-form-control>
+        </nz-form-item>
+
+
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button nz-button nzType="primary" *ngIf="mode === 'add'" [disabled]="!validateForm.valid">Submit</button>
+            <button nz-button nzType="primary" *ngIf="mode === 'edit'" [disabled]="!validateForm.valid">Update</button>
+        </nz-form-control>
+    </form>
+</div>
+<div *ngIf="screen === 1">
+    <nz-result nzStatus="success" nzTitle="Success!"
+        [nzSubTitle]="mode === 'add'? 'Employee has been added to database' : 'Employee has been updated'">
+        <div nz-result-extra>
+            <button nz-button nzType="primary" (click)="closeModal()">Close</button>
+        </div>
+    </nz-result>
+</div>
+<div *ngIf="screen === 2">
+    <nz-result nzTitle="Submission Failed" nzStatus="error" nzSubTitle="Please try again.">
+        <div nz-result-extra>
+            <button nz-button nzType="primary" (click)="back()">Back</button>
+        </div>
+    </nz-result>
+</div>

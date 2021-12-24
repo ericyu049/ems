@@ -1,0 +1,31 @@
+.logout{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    .table {
+        width: 50%;
+        .action {
+            margin-bottom: 16px;
+            button {
+                margin-right: 8px;
+            }
+        }
+        th {
+            background-color: #cecece;
+        }
+    }
+    .profile {
+        width: 50%;
+        padding: 25px;
+        .empty {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

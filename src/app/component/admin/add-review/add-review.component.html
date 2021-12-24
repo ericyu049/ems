@@ -1,0 +1,54 @@
+<div class="form" *ngIf="screen === 0">
+    <div class="formitem">
+        <div class="label">
+            Reviewee:
+        </div>
+        <div class="value">
+            {{ target.name }}
+        </div>
+    </div>
+    <div class="formitem">
+        <div class="label">
+            Assigned Date:
+        </div>
+        <div class="value">
+            {{ today | date: 'MM/dd/YYYY'}}
+        </div>
+    </div>
+    <div class="formitem">
+        <div class="label">
+            Assign Employees:
+        </div>
+        <div class="value">
+            <nz-select nzMode="multiple" nzShowSearch nzAllowClear nzPlaceHolder="Select Employee(s)"
+                [(ngModel)]="selectedValue">
+                <nz-option *ngFor="let e of employees" [nzLabel]="e.name" [nzValue]="e"></nz-option>
+            </nz-select>
+        </div>
+    </div>
+    <div style="margin-bottom: 10px;"></div>
+    <div class="formitem">
+        <div class="label">
+
+        </div>
+        <div class="value">
+            <button nz-button nzType="primary" [disabled]="!selectedValue || selectedValue.length === 0"
+                (click)="submit()">Submit</button>
+        </div>
+    </div>
+</div>
+<div *ngIf="screen === 1">
+    <nz-result nzStatus="success" nzTitle="Success!"
+        nzSubTitle="Review is added">
+        <div nz-result-extra>
+            <button nz-button nzType="primary" (click)="closeModal()">Close</button>
+        </div>
+    </nz-result>
+</div>
+<div *ngIf="screen === 2">
+    <nz-result nzTitle="Submission Failed" nzStatus="error" nzSubTitle="Please try again.">
+        <div nz-result-extra>
+            <button nz-button nzType="primary" (click)="back()">Back</button>
+        </div>
+    </nz-result>
+</div>

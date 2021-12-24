@@ -1,0 +1,103 @@
+<div class="logout">
+    <button nz-button (click)="logout()">Log Out</button>
+</div>
+<nz-layout>
+    <nz-sider class="sider" [nzWidth]="350">
+        <div>
+            <nz-avatar class="avatar" nzIcon="user" nzShape="circle" [nzSize]="250" [nzSrc]="myprofile.avatar">
+            </nz-avatar>
+            <div class="name">{{myprofile.name}}</div>
+            <div class="subdetails">
+                <div class="subdetail">
+                    <div class="label">Employee Id: </div>
+                    <div class="value">{{ myprofile.id }}</div>
+                </div>
+                <div class="subdetail">
+                    <div class="label">Role: </div>
+                    <div class="value">{{ myprofile.role }}</div>
+                </div>
+                <div class="subdetail">
+                    <div class="label">Level: </div>
+                    <div class="value">{{ myprofile.level }}</div>
+                </div>
+                <div class="subdetail">
+                    <div class="label">Department: </div>
+                    <div class="value">{{ myprofile.department }}</div>
+                </div>
+            </div>
+
+        </div>
+    </nz-sider>
+    <nz-content class="content">
+        <h1>My Dashboard</h1>
+        <nz-divider></nz-divider>
+        <nz-content class="subcontent">
+            <div class="stats">
+                <nz-card nzTitle="My Time">
+                    <div class="card">
+                        <div class="today">
+                            <span class="dow">{{today | date: 'EEEE'}}</span>
+                            <span class="date">{{today | date: 'MMMM dd, YYYY'}}</span>
+                            <span class="time">{{today | date: 'h:mm:ss a'}}</span>
+                        </div>
+                        <div class="clock">
+                            <span class="label">Clock In Time</span>
+                            <span class="clock-in">8:30:46 AM</span>
+                            <span class="label">Clock Out Time</span>
+                            <span class="clock-out">5:02:15 PM</span>
+
+                        </div>
+                    </div>
+                </nz-card>
+                <span style="margin-right: 8px"></span>
+                <nz-card nzTitle="Performance">
+                    <div class="card">
+                        <nz-row [nzGutter]="16" style="width: 100%">
+                            <nz-col [nzSpan]="12">
+                                <nz-card>
+                                    <nz-statistic [nzValue]="(11.28 | number: '1.0-2')!" [nzTitle]="'Active'"
+                                        [nzPrefix]="prefixTplOne" [nzSuffix]="'%'"
+                                        [nzValueStyle]="{ color: '#00bd6e' }">
+                                    </nz-statistic>
+                                    <ng-template #prefixTplOne><i nz-icon nzType="arrow-up"></i></ng-template>
+                                </nz-card>
+                            </nz-col>
+                            <nz-col [nzSpan]="12">
+                                <nz-card>
+                                    <nz-statistic [nzValue]="(9.3 | number: '1.0-2')!" [nzTitle]="'Idle'"
+                                        [nzPrefix]="prefixTplTwo" [nzSuffix]="'%'"
+                                        [nzValueStyle]="{ color: '#ff4949' }">
+                                    </nz-statistic>
+                                    <ng-template #prefixTplTwo><i nz-icon nzType="arrow-down"></i></ng-template>
+                                </nz-card>
+                            </nz-col>
+                        </nz-row>
+                    </div>
+                </nz-card>
+            </div>
+            <h3>Pending Feedbacks</h3>
+            <nz-divider></nz-divider>
+            <nz-table #table nzShowPagination nzShowSizeChanger [nzData]="reviews" nzSize="small" nzPageSize="5">
+                <thead>
+                    <tr>
+                        <th>RID</th>
+                        <th>Assigned Date</th>
+                        <th>Status</th>
+                        <th># of Participants</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let data of table.data">
+                        <tr style="cursor: pointer;" (click)="openReview(data)">
+                            <td>{{ data.rid }}</td>
+                            <td>{{ data.assignedDate | date: 'MM/dd/YYYY'}}</td>
+                            <td>{{ data.completed? 'Completed': 'Open' }}</td>
+                            <td>{{ data.participants.length }}</td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </nz-table>
+        </nz-content>
+    </nz-content>
+
+</nz-layout>

@@ -1,0 +1,54 @@
+<div class="logout">
+    <button nz-button (click)="logout()">Log Out</button>
+</div>
+<div class="header">
+    <h1>Employee Center</h1>
+</div>
+<nz-divider></nz-divider>
+<div class="content">
+    <div class="table">
+        <div class="action">
+            <button nz-button nzType="primary" (click)="addEmployee()">Add Employee</button>
+            <button nz-button nzType="default" nzDanger *ngIf="setOfCheckedId.size > 0" (click)="deleteEmployees()">Remove Employee</button>
+        </div>
+        <nz-table #table nzShowPagination nzShowSizeChanger [nzData]="employeeList" nzSize="small" nzPageSize="15"
+            (nzCurrentPageDataChange)="onCurrentPageDataChange($event)">
+            <thead>
+                <tr>
+                    <th [nzChecked]="checked" [nzIndeterminate]="indeterminate"
+                        (nzCheckedChange)="onAllChecked($event)">
+                    </th>
+                    <th [nzSortFn]="idSort()">Id</th>
+                    <th [nzSortFn]="nameSort()">Name</th>
+                    <th [nzSortFn]="roleSort()">Role</th>
+                    <th [nzSortFn]="levelSort()">Level</th>
+                    <th [nzSortFn]="departmentSort()">Department</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of table.data" style="cursor: pointer;" (click)="setSelected(data)">
+                    <td [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)">
+                    </td>
+                    <td>{{ data.id }}</td>
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.role }}</td>
+                    <td>{{ data.level }}</td>
+                    <td>{{ data.department }}</td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+    <nz-divider nzType="vertical"></nz-divider>
+    <div class="profile">
+        <div *ngIf="selected else placeholder">
+            <emp-profile [selected]="selected"></emp-profile>
+        </div>
+        <ng-template #placeholder>
+            <div class="empty">
+                <nz-empty nzNotFoundImage="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
+                    nzNotFoundContent="Select on an employee to view details"></nz-empty>
+            </div>
+
+        </ng-template>
+    </div>
+</div>

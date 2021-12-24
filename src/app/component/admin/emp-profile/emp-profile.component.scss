@@ -1,0 +1,50 @@
+.info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    .detail {
+        .name {
+            font-size: 20pt;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            i {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                width: 41px;
+                height: 41px;
+                border-radius: 2px;
+            }
+            i:hover {
+                background-color: #dfdfdf;
+            }
+        }
+        .subdetails {
+            width: 100%;
+            .subdetail {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                .label {
+                    width: 140px;
+                }
+                .value {
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
+.reviews {
+    .action {
+        margin-bottom: 16px;
+            button {
+                margin-right: 8px;
+            }
+    }
+}

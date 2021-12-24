@@ -1,0 +1,44 @@
+{
+    "/employees": {
+        "target": "http://localhost:8081",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/employee": {
+        "target": "http://localhost:8081",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/review" : {
+        "target": "http://localhost:8081",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/closereview" : {
+        "target": "http://localhost:8081",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/updateparticipants" : {
+        "target": "http://localhost:8081",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/feedback" : {
+        "target": "http://localhost:8081",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/pendingreview" : {
+        "target": "http://localhost:8081",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    }
+}

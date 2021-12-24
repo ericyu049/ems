@@ -1,0 +1,59 @@
+<div class="info">
+    <div class="detail">
+        <div class="name">
+            {{ selected.name }}
+            <i nz-icon nzType="edit" nzTheme="outline" (click)="updateEmployee()"></i>
+        </div>
+        <div class="subdetails">
+            <div class="subdetail">
+                <div class="label">Employee Id: </div>
+                <div class="value">{{ selected.id }}</div>
+            </div>
+            <div class="subdetail">
+                <div class="label">Role: </div>
+                <div class="value">{{ selected.role }}</div>
+            </div>
+            <div class="subdetail">
+                <div class="label">Level: </div>
+                <div class="value">{{ selected.level }}</div>
+            </div>
+            <div class="subdetail">
+                <div class="label">Department: </div>
+                <div class="value">{{ selected.department }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="avatar">
+        <nz-avatar nzIcon="user" nzShape="square" [nzSize]="200" [nzSrc]="selected.avatar"></nz-avatar>
+    </div>
+</div>
+<div class="reviews">
+    <h2>Reviews</h2>
+    <nz-divider></nz-divider>
+    <div class="table">
+        <div class="action">
+            <button nz-button nzType="primary" (click)="addReview()">Add Performance Review</button>
+            <button nz-button nzType="default"></button>
+        </div>
+        <nz-table #table nzShowPagination nzShowSizeChanger [nzData]="reviews" nzSize="small" nzPageSize="5">
+            <thead>
+                <tr>
+                    <th>RID</th>
+                    <th>Assigned Date</th>
+                    <th>Status</th>
+                    <th># of Participants</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let data of table.data">
+                    <tr style="cursor: pointer;" (click)="openReview(data)">
+                        <td>{{ data.rid }}</td>
+                        <td>{{ data.assignedDate | date: 'MM/dd/YYYY'}}</td>
+                        <td>{{ data.completed? 'Completed': 'Open' }}</td>
+                        <td>{{ data.participants.length }}</td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </nz-table>
+    </div>
+</div>

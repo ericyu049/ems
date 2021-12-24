@@ -1,0 +1,22 @@
+.form {
+    .formitem {
+        display: flex;
+        flex-direction: row;
+        justify-content: stretch;
+        margin: 5px;
+        .label {
+            width: 230px;
+            justify-content: flex-start;
+            align-items: center;
+            display: flex;
+        }
+        .value {
+            justify-content: flex-end;
+            align-items: center;
+            display: flex;
+            nz-select {
+                width: 230px;
+            }
+        }
+    }
+}

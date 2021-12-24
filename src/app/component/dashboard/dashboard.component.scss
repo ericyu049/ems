@@ -1,0 +1,84 @@
+.logout {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.sider {
+    .avatar {
+        margin-bottom: 8px;
+    }
+    background-color: rgb(255, 255, 255);
+    width: 400px !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .name {
+        font-size: 20pt;
+        font-weight: bold;
+        margin-bottom: 8px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .subdetails {
+        width: 100%;
+        .subdetail {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            .label {
+                width: 140px;
+            }
+            .value {
+                text-align: left;
+            }
+        }
+    }
+}
+.content {
+    background-color: white;
+    .subcontent {
+        padding: 10px;
+        .stats {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 25px;
+            .card {
+                width: 500px;
+                margin: 5px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                .today {
+                    display: flex;
+                    flex-direction: column;
+                    .dow {
+                        font-size: 16pt;
+                    }
+                    .date {
+                        font-size: 12pt;
+                    }
+                    .time {
+                        font-size: 36pt;
+                        color: rgb(0, 189, 110);
+                    }
+                }
+                .clock {
+                    display: flex;
+                    flex-direction: column;
+                    .label {
+                        font-size: 12pt;
+                    }
+                    .clock-in{
+                        font-size: 20pt;
+                        color: #ff4949
+                    }
+                    .clock-out {
+                        font-size: 20pt;
+                        color: #ffbb29
+                    }
+                }
+            }
+        }
+    }
+}
