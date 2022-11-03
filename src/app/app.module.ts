@@ -26,6 +26,7 @@ import { AddSprintComponent } from './component/add-sprint/add-sprint.component'
 import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
 import { PriorityPipe } from './pipe/priority.pipe';
 import { BacklogComponent } from './component/backlog/backlog.component';
+import { ProjectDetailComponent } from './component/project-detail/project-detail.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { BacklogComponent } from './component/backlog/backlog.component';
     AddStoryComponent,
     AddSprintComponent,
     BacklogComponent,
+    ProjectDetailComponent,
     StatusPipe,
     PriorityPipe
   ],

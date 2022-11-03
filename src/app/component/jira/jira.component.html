@@ -19,7 +19,7 @@
         </button>
         <button mat-button [color]="selectedTab == 3 ? color : null" (click)="setSelected(3)">
             <mat-icon fontSet="material-icons-outlined">info</mat-icon>
-            <span>Project Details</span>
+            <span>Project Detail</span>
         </button>
         <button mat-button [color]="selectedTab == 4 ? color : null" (click)="setSelected(4)">
             <mat-icon fontSet="material-icons-outlined">settings</mat-icon>
@@ -29,5 +29,6 @@
     <div class="content">
         <active-sprints-comp *ngIf="selectedTab === 0"></active-sprints-comp>
         <backlog-comp *ngIf="selectedTab === 1"></backlog-comp>
+        <project-detail *ngIf="selectedTab === 3"></project-detail>
     </div>
 </div>
