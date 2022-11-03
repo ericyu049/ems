@@ -1,0 +1,22 @@
+<div class="container" >
+    <h2 class="mat-title">New Employee</h2>
+    <form class="column-align" style="margin-top: 25px;" [formGroup]="addEmployeeForm" (ngSubmit)="addEmployee()">
+        <mat-form-field appearance="outline">
+            <mat-label>Employee Name</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Department</mat-label>
+            <input matInput formControlName="department">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Role</mat-label>
+            <input matInput formControlName="role">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Level</mat-label>
+            <input matInput formControlName="level">
+        </mat-form-field>
+        <button mat-raised-button color="primary" [disabled]="!isValid">Add Employee</button>
+    </form>
+</div>

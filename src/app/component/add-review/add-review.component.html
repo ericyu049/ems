@@ -1,0 +1,25 @@
+<div class="container">
+    <h2 class="mat-title">Create Performance Review</h2>
+    <form class="column-align" style="margin-top: 25px;" [formGroup]="addReviewForm" (ngSubmit)="addReview()">
+        <div class="index column-align">
+            <mat-label class="key">Reviewee</mat-label>
+            <span>{{data.name}}</span>
+        </div>
+        <div class="index column-align">
+            <mat-label class="key">Assigned Date</mat-label>
+            <span>{{date | date: 'medium'}}</span>
+        </div>
+
+        <div class="index column-align" style="font-size: 12px;" *ngIf="doneLoading">
+            <mat-label>Participants</mat-label>
+            <mat-form-field appearance="outline">
+                <mat-select formControlName="participants" multiple>
+                    <mat-option *ngFor="let employee of employees" [value]="employee.name">{{employee.name}}  </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <button mat-raised-button color="primary" [disabled]="!isValid">Create</button>
+    </form>
+    
+</div>

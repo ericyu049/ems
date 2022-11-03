@@ -1,0 +1,10 @@
+<div class="column-align" style="justify-content: space-between; height: 95%">
+    <div class="row-align">
+        <mat-icon style="color: rgb(255, 174, 0); height: 40px; width: 40px; font-size: 40px;">warning</mat-icon>
+        <div class="column-align" style="padding-left: 15px; justify-content: center;">{{message}} {{data}} ?</div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button color="primary" [mat-dialog-close]="false" cdkFocusInitial>Cancel</button>
+        <button mat-stroked-button color="primary" button [mat-dialog-close]="true">Ok</button>
+    </div>
+</div>

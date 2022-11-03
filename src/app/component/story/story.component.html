@@ -1,0 +1,18 @@
+<div class="container" *ngIf="size === 'kanban'">
+    <mat-card class="story_card" cdkDrag>
+        <mat-card-title>
+                <h3 class="row-align header">
+                    {{story.title}}
+                    <div class="priority column-align center" [style.background]="story.priority | priority">{{story.priority}}</div>
+                </h3>
+        </mat-card-title>
+        <mat-card-content>
+            {{story.description}}
+        </mat-card-content>
+        <mat-card-footer>
+            <div class="row-align" style="width: 100%; justify-content: flex-end;">
+                <div class="employee">{{story.employee.name}}</div>
+            </div>
+        </mat-card-footer>
+    </mat-card>
+</div>

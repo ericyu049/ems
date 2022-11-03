@@ -1,0 +1,33 @@
+.searchBar {
+    width: 500px;
+}
+.content {
+    width: 100%;
+    .action {
+        width: 100%;
+        justify-content: space-between;
+        button {
+            height: min-content;
+        }
+    }
+    .table {
+        .mat-column-id {
+            max-width: 80px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+}
+.employeePanelWrapper {
+    flex-grow: 1;
+    min-width: 550px;
+    height: calc(100% - 15px);
+    .employeePanel {
+        border: solid 1px #cccccc;
+        height: 100%;
+        width: 100%;
+        margin: 15px;
+        border-radius: 10px;
+    }
+}

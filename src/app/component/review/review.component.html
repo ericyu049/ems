@@ -1,0 +1,61 @@
+<div style="height: 100%;">
+    <h2 class="mat-title">Performance Review</h2>
+    <div class="row-align" style="height: calc(100% - 48px)">
+        <div class="info-container">
+            <div class="column-align" style="justify-content: space-between;">
+                <div class="index">
+                    <div class="key">
+                        ASSIGNED DATE
+                    </div>
+                    <div class="value">
+                        {{data.assignedDate | date: 'medium'}}
+                    </div>
+                </div>
+                <div class="index">
+                    <div class="key">
+                        STATUS
+                    </div>
+                    <div class="value">
+                        {{data.completed | status}}
+                    </div>
+                </div>
+                <div class="index">
+                    <div class="key">
+                        ASSIGNED PARTICIPANTS
+                    </div>
+                    <div class="value">
+                        {{data.participants}}
+                    </div>
+                </div>
+                <div class="action-buttons column-align">
+                    <button mat-stroked-button class="button" color="primary" (click)="markComplete()">Mark as Completed</button>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="column-align" style="flex-grow: 1;">
+            <h3 style="font-style: bold">Feedbacks</h3>
+            <div *ngIf="doneLoading" class="column-align" style="justify-content: space-between; height: calc(100% - 44px)">
+                <div class="feedbacks" style="flex-grow: 1;">
+                    <feedback-comp *ngFor="let f of feedbacks" [feedback]="f"></feedback-comp>
+                </div>
+
+
+                <form class="column-align" style="margin-top: 25px;" [formGroup]="feedbackForm"
+                    (ngSubmit)="submitFeedback()">
+                    <div class="index column-align" style="font-size: 12px;">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Feedback</mat-label>
+                            <textarea matInput formControlName="feedback"></textarea>
+                        </mat-form-field>
+                    </div>
+
+                    <button mat-raised-button color="primary" [disabled]="!isValid">Submit</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>

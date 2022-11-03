@@ -1,0 +1,33 @@
+<div class="container row-align">
+    <div class="side-nav column-align">
+        <div class="project_title row-align">
+            <img class="project_icon" src="/assets/tlm.png">
+            <span class="title">Project Alpha</span>
+        </div>
+
+        <button mat-button [color]="selectedTab == 0 ? color : null" (click)="setSelected(0)">
+            <mat-icon fontSet="material-icons-outlined">view_kanban</mat-icon>
+            <span>Active Sprints</span>
+        </button>
+        <button mat-button [color]="selectedTab == 1 ? color : null" (click)="setSelected(1)">
+            <mat-icon>list_alt</mat-icon>
+            <span>Backlog</span>
+        </button>
+        <button mat-button [color]="selectedTab == 2 ? color : null" (click)="setSelected(2)">
+            <mat-icon fontSet="material-icons-outlined">rocket_launch</mat-icon>
+            <span>Releases</span>
+        </button>
+        <button mat-button [color]="selectedTab == 3 ? color : null" (click)="setSelected(3)">
+            <mat-icon fontSet="material-icons-outlined">info</mat-icon>
+            <span>Project Details</span>
+        </button>
+        <button mat-button [color]="selectedTab == 4 ? color : null" (click)="setSelected(4)">
+            <mat-icon fontSet="material-icons-outlined">settings</mat-icon>
+            <span>Project Settings</span>
+        </button>
+    </div>
+    <div class="content">
+        <active-sprints-comp *ngIf="selectedTab === 0"></active-sprints-comp>
+        <backlog-comp *ngIf="selectedTab === 1"></backlog-comp>
+    </div>
+</div>

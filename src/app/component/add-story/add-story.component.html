@@ -1,0 +1,40 @@
+<h2>
+    Create New Story
+</h2>
+<div>
+    <form>
+        <form class="column-align" style="margin-top: 25px;" [formGroup]="addStoryForm" (ngSubmit)="addStory()">
+            <mat-form-field appearance="outline">
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title">
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Priority</mat-label>
+                <mat-select formControlName="priority">
+                    <mat-option value="1">1</mat-option>
+                    <mat-option value="2">2</mat-option>
+                    <mat-option value="3">3</mat-option>
+                    <mat-option value="4">4</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Assign To</mat-label>
+                <mat-select formControlName="employee">
+                    <mat-option *ngFor="let e of employees$ | async" [value]="e">{{e.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Sprint</mat-label>
+                <mat-select formControlName="sprint">
+                    <mat-option *ngFor="let s of (sprints$ | async)" [value]="s.name">{{s.name}}</mat-option>
+                </mat-select>            
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+            </mat-form-field>
+            <button mat-raised-button color="primary" [disabled]="!isValid">Add Story</button>
+        </form>
+    </form>
+</div>

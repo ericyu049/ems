@@ -1,0 +1,9 @@
+<div class="row-align" style="margin: 15px 0;" *ngIf="doneLoading">
+    <div [ngStyle]="avatarStyle"></div>
+    <mat-card style="flex-grow: 1; margin-right: 10px;">
+        <div class="column-align">
+            <h5 style="color: #696969">{{employee.name}}</h5>
+            <div>{{feedback.comment}}</div>
+        </div>
+    </mat-card>
+</div>
