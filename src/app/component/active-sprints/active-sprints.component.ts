@@ -27,7 +27,7 @@ export class ActiveSprintsComponent {
 	ngOnInit(): void {
 		this.service.getSprints().subscribe({
 			next: (data: any) => {
-				this.sprints = data.sprints;
+				this.sprints = data.sprints.filter((sprint: any) => sprint.name !== 'backlog');
 				if (data.sprints.length > 0) {
 					this.selectedSprint = data.sprints[0];
 					this.getStories(this.selectedSprint.name);
@@ -38,7 +38,8 @@ export class ActiveSprintsComponent {
 	getSprints() {
 		this.service.getSprints().subscribe({
 			next: (data: any) => {
-				this.sprints = data.sprints;
+				this.sprints = data.sprints.filter((sprint: any) => sprint.name === 'backlog');
+				console.log(this.sprints);
 				if (data.sprints.length > 0) {
 					this.selectedSprint = data.sprints[0];
 				}

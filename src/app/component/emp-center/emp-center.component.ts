@@ -30,7 +30,7 @@ export class EmployeeCenterComponent implements AfterViewInit {
     getEmployees() {
         this.service.getEmployees().subscribe({
             next: (data: any) => {
-                this.dataSource = new MatTableDataSource(data.employees);
+                this.dataSource = new MatTableDataSource(data.employees.filter((employee: any) => employee.name !== 'Andrew'));
                 this.doneLoading = true;
                 this.dataSource.paginator = this.paginator;
             }
@@ -55,7 +55,8 @@ export class EmployeeCenterComponent implements AfterViewInit {
     addEmployee() {
         const dialog = this.dialog.open(AddEmployeeComponent, {
             width: '450px',
-            height: '600px'
+            height: '700px',
+            disableClose: true
         });
         dialog.afterClosed().subscribe({
             next: (result) => {

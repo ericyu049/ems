@@ -1,0 +1,20 @@
+.container {
+    background: url('../../../assets/background.jpeg') no-repeat;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    .login-panel {
+        position: relative;
+        width: 400px;
+        height: 450px;
+        .image {
+            padding: 35px;
+            cursor: pointer;
+        }
+        .inputfield, .actionButton {
+            width: 300px;
+        }
+    }
+}

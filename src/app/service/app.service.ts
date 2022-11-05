@@ -29,7 +29,9 @@ export class AppService {
     addReview(review: Review) {
         return this.http.put('/api/review/' + review.targetId, review, { reportProgress: true, responseType: 'json' });
     }
-
+    closeReview(review: Review) {
+        return this.http.patch('/api/review/' + review.rid, { reportProgress: true, responseType: 'json' });
+    }
     getFeedbacks(rid: string) {
         return this.http.get('/api/feedback/' + rid, { reportProgress: true, responseType: 'json' });
     }
@@ -43,7 +45,7 @@ export class AppService {
         return this.http.get('/api/story', { params: params, reportProgress: true, responseType: 'json' });
     }
     updateStory(params: any) {
-        return this.http.patch('/api/story', params, {reportProgress: true, responseType: 'json'});
+        return this.http.patch('/api/story', params, { reportProgress: true, responseType: 'json' });
     }
 
     addSprint(sprint: Sprint) {
@@ -51,5 +53,9 @@ export class AppService {
     }
     getSprints() {
         return this.http.get('/api/sprint', { reportProgress: true, responseType: 'json' });
+    }
+
+    getProject() {
+        return this.http.get('/api/project', { reportProgress: true, responseType: 'json' });
     }
 }

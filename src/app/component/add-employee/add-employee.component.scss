@@ -1,0 +1,13 @@
+.file-input {
+    display: none;
+}
+.file-upload {
+    padding-top: 15px;
+    position: relative;
+    .upload-btn {
+        position: absolute;
+        z-index: 5;
+        bottom: 30px;
+        right: 20px;
+    }
+}

@@ -6,7 +6,7 @@
         </div>
 
         <button mat-button [color]="selectedTab == 0 ? color : null" (click)="setSelected(0)">
-            <mat-icon fontSet="material-icons-outlined">view_kanban</mat-icon>
+            <mat-icon fontSet="material-icons-outlined">rocket_launch</mat-icon>
             <span>Active Sprints</span>
         </button>
         <button mat-button [color]="selectedTab == 1 ? color : null" (click)="setSelected(1)">
@@ -14,14 +14,10 @@
             <span>Backlog</span>
         </button>
         <button mat-button [color]="selectedTab == 2 ? color : null" (click)="setSelected(2)">
-            <mat-icon fontSet="material-icons-outlined">rocket_launch</mat-icon>
-            <span>Releases</span>
-        </button>
-        <button mat-button [color]="selectedTab == 3 ? color : null" (click)="setSelected(3)">
             <mat-icon fontSet="material-icons-outlined">info</mat-icon>
             <span>Project Detail</span>
         </button>
-        <button mat-button [color]="selectedTab == 4 ? color : null">
+        <button mat-button [color]="selectedTab == 3 ? color : null" (click)="setSelected(3)">
             <mat-icon fontSet="material-icons-outlined">settings</mat-icon>
             <span>Project Settings</span>
         </button>
@@ -29,6 +25,7 @@
     <div class="content">
         <active-sprints-comp *ngIf="selectedTab === 0"></active-sprints-comp>
         <backlog-comp *ngIf="selectedTab === 1"></backlog-comp>
-        <project-detail *ngIf="selectedTab === 3"></project-detail>
+        <project-detail *ngIf="selectedTab === 2"></project-detail>
+        <project-setting *ngIf="selectedTab === 3"></project-setting>
     </div>
 </div>

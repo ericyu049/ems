@@ -1,10 +1,9 @@
-
     <div class="navbar-container" color="primary">
-        <a routerLink="/dashboard"><img height="43px" src="/assets/logo/EMS-logos_black.png"></a>
+        <a routerLink="/dashboard"><img height="32px" src="/assets/logo/logo_blank.png"></a>
         <div>
             <a mat-flat-button routerLink="/dashboard">DASHBOARD</a>
             <a mat-flat-button routerLink="/jira">JIRA</a>
-            <a mat-flat-button routerLink="/empcenter">EMPLOYEE CENTER</a>
-            <a mat-flat-button routerLink="/login">LOGOUT</a>
+            <a mat-flat-button *ngIf="isAdmin" routerLink="/empcenter">EMPLOYEE CENTER</a>
+            <a mat-flat-button (click)="logout()">LOGOUT</a>
         </div>
     </div>

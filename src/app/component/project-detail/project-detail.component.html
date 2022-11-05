@@ -3,3 +3,35 @@
         <h1 style="margin-left: 10px; font-weight: 500;">Project Detail</h1>
     </div>
 </div>
+<div class="container" *ngFor="let project of project$ | async">
+    <div class="index">
+        <div class="key">PROJECT TITLE</div>
+        <div class="value">{{ project.title }}</div>
+    </div>
+    <div class="index">
+        <div class="key">START DATE</div>
+        <div class="value">{{ project.startDate | date: 'MM/dd/YYYY'}}</div>
+    </div>
+    <div class="index">
+        <div class="key">END DATE</div>
+        <div class="value">{{ project.endDate | date: 'MM/dd/YYYY'}}</div>
+    </div>
+    <div class="index">
+        <div class="key">DESCRIPTION</div>
+        <div class="value">
+            {{ project.description }}
+        </div>
+    </div>
+    <div class="index">
+        <div class="key">TOOLS & FRAMEWORK</div>
+        <div class="value">
+            {{ project.tools }}
+        </div>
+    </div>
+    <div class="index">
+        <div class="key"># OF STORIES</div>
+        <div class="value">
+            {{totalStories$ | async}}
+        </div>
+    </div>
+</div>

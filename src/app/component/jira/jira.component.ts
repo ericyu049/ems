@@ -9,7 +9,7 @@ import { AppService } from "src/app/service/app.service";
 })
 export class JiraComponent implements OnInit{
     
-    selectedTab: number = 1;
+    selectedTab: number = 0;
     color = "primary";
 
     get selectedName() {

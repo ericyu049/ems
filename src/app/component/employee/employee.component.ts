@@ -49,6 +49,11 @@ export class EmployeeComponent implements AfterViewInit, OnChanges {
             height: '80vh',
             data: review
         })
+        dialogRef.afterClosed().subscribe({
+            next: result => {
+                if (result) this.getReviews();
+            }
+        })
     }
     addReview() {
         const dialogRef = this.dialog.open(AddReviewComponent, {

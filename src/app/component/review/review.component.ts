@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Feedback } from "src/app/model/feedback.model";
 import { Review } from "src/app/model/review.model";
 import { AppService } from "src/app/service/app.service";
@@ -17,7 +17,7 @@ export class ReviewComponent implements OnInit {
     feedbacks !: Feedback[];
     doneLoading: boolean = false;
     get isValid() { return this.feedbackForm.valid; }
-    constructor(@Inject(MAT_DIALOG_DATA) public data: Review, private fb: FormBuilder, private service: AppService, public dialog: MatDialog) {
+    constructor(@Inject(MAT_DIALOG_DATA) public data: Review, private fb: FormBuilder, private service: AppService, public dialog: MatDialogRef<ReviewComponent>) {
 
     }
     ngOnInit(): void {
@@ -37,7 +37,7 @@ export class ReviewComponent implements OnInit {
     }
     submitFeedback() {
         const feedback: Feedback = {
-            from: '831ffbd4-980c-46ea-85a8-c4632ecc8366',
+            from: '',
             to: this.data.targetId,
             rating: 5,
             fid: uuidv4(),
@@ -55,6 +55,10 @@ export class ReviewComponent implements OnInit {
         })
     }
     markComplete() {
-
+        this.service.closeReview(this.data).subscribe({
+            next: (data)=> {
+                this.dialog.close(true);
+            }
+        })
     }
 }

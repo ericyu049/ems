@@ -3,13 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { EmployeeCenterComponent } from './component/emp-center/emp-center.component';
 import { JiraComponent } from './component/jira/jira.component';
+import { LoginComponent } from './component/login/login.component';
+import { AuthGuardService } from './service/authguard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  // { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'empcenter', component: EmployeeCenterComponent },
-  { path: 'jira', component: JiraComponent}
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService] },
+  { path: 'empcenter', component: EmployeeCenterComponent, canActivate: [AuthGuardService] },
+  { path: 'jira', component: JiraComponent, canActivate: [AuthGuardService] }
 ];
 
 @NgModule({

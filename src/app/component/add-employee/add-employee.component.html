@@ -1,6 +1,10 @@
-<div class="container" >
+<div class="container column-align">
     <h2 class="mat-title">New Employee</h2>
-    <form class="column-align" style="margin-top: 25px;" [formGroup]="addEmployeeForm" (ngSubmit)="addEmployee()">
+    <input type="file" class="file-input" accept="image/*" maxFileSize="50000" (change)="onFileSelected($event)" #fileUpload>
+    <div class="file-upload" style="align-self: center;">
+        <img width="120" [src]="url" (click)="fileUpload.click()" style="cursor: pointer;">
+    </div>
+    <form class="column-align" style="margin-top: 25px; padding-bottom: 10px;" [formGroup]="addEmployeeForm" (ngSubmit)="addEmployee()">
         <mat-form-field appearance="outline">
             <mat-label>Employee Name</mat-label>
             <input matInput formControlName="name">
@@ -17,6 +21,9 @@
             <mat-label>Level</mat-label>
             <input matInput formControlName="level">
         </mat-form-field>
-        <button mat-raised-button color="primary" [disabled]="!isValid">Add Employee</button>
+
+
+        <button mat-raised-button color="primary" [disabled]="!isValid">Add Employee</button>        
     </form>
+    <button mat-raised-button color="primary" (click)="cancel()">Cancel</button>
 </div>

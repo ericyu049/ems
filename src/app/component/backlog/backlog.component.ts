@@ -18,6 +18,7 @@ export class BacklogComponent implements OnInit {
 	columns: string[] = ['priority', 'title', 'description'];
 	dataSource!: MatTableDataSource<Story>;
 	doneLoading: boolean = false;
+	length: number = 0;
 	@ViewChild(MatPaginator) paginator!: MatPaginator;
 
 	constructor(public dialog: MatDialog, private service: AppService) {
@@ -27,6 +28,7 @@ export class BacklogComponent implements OnInit {
 		this.service.getStories({ sprint: 'Backlog' }).subscribe({
 			next: (data: any) => {
 				this.dataSource = new MatTableDataSource(data.stories);
+				this.length = data.stories.length; 
 				this.doneLoading = true;
 				this.dataSource.paginator = this.paginator;
 			}

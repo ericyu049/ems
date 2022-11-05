@@ -1,0 +1,27 @@
+<div class="container column-align center">
+    <mat-card class="login-panel" style="border-radius: 6px;">
+        <mat-card-content class="column-align center" >
+            <!--logo-->
+            <div class="row-align center">
+                <img width="180" class="image" src="/assets/logo/logo_blank.png" routerLink="/home">
+            </div>
+            <!--login -form-->
+            <form class="column-align center" style="padding-bottom: 15px" [formGroup]="loginForm" (ngSubmit)="login()">
+                <!--username-->
+                <mat-form-field class="inputfield" appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput formControlName="username">
+                </mat-form-field>
+
+                <!--password-->
+                <mat-form-field class="inputfield" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password">
+                </mat-form-field>
+
+                <!--submit button-->
+                <button mat-raised-button color="primary" class="actionButton">LOGIN</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -27,9 +27,14 @@ import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
 import { PriorityPipe } from './pipe/priority.pipe';
 import { BacklogComponent } from './component/backlog/backlog.component';
 import { ProjectDetailComponent } from './component/project-detail/project-detail.component';
+import { ProjectSettingComponent } from './component/project-setting/project-setting.component';
+import { LoginComponent } from './component/login/login.component';
+import { AuthService } from './service/auth.service';
+import { AuthGuardService } from './service/authguard.service';
 
 @NgModule({
   declarations: [
+    LoginComponent,
     AppComponent,
     TopNavComponent,
     EmployeeCenterComponent,
@@ -47,6 +52,7 @@ import { ProjectDetailComponent } from './component/project-detail/project-detai
     AddSprintComponent,
     BacklogComponent,
     ProjectDetailComponent,
+    ProjectSettingComponent,
     StatusPipe,
     PriorityPipe
   ],
@@ -61,7 +67,9 @@ import { ProjectDetailComponent } from './component/project-detail/project-detai
     MatNativeDateModule
   ],
   providers: [
-    AppService
+    AppService,
+    AuthService,
+    AuthGuardService,
   ],
   bootstrap: [AppComponent]
 })
