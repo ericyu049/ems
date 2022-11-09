@@ -77,6 +77,7 @@ export class EmployeeCenterComponent implements AfterViewInit {
                 if (result) {
                     this.service.deleteEmployees(this.selection.selected).subscribe({
                         next: () => {
+                            
                             this.getEmployees();
                             this.selection.clear();
                         }
