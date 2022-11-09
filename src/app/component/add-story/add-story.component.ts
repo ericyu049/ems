@@ -46,7 +46,7 @@ export class AddStoryComponent implements OnInit {
         }
         this.serivce.addStory(request).subscribe({
             next: (data) => {
-                this.dialog.close();
+                this.dialog.close(true);
             }
         })
     }

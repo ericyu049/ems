@@ -24,7 +24,6 @@ export class TopNavComponent implements OnInit{
                     error: (error) => { this.isAdmin = false } 
                 })
                 this.currentRoute = event.url;          
-                console.log(event);
             }
         });
     }

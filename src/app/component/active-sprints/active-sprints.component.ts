@@ -25,23 +25,15 @@ export class ActiveSprintsComponent {
 
 	}
 	ngOnInit(): void {
-		this.service.getSprints().subscribe({
-			next: (data: any) => {
-				this.sprints = data.sprints.filter((sprint: any) => sprint.name !== 'backlog');
-				if (data.sprints.length > 0) {
-					this.selectedSprint = data.sprints[0];
-					this.getStories(this.selectedSprint.name);
-				}
-			}
-		})
+		this.getSprints();
 	}
 	getSprints() {
 		this.service.getSprints().subscribe({
 			next: (data: any) => {
-				this.sprints = data.sprints.filter((sprint: any) => sprint.name === 'backlog');
-				console.log(this.sprints);
-				if (data.sprints.length > 0) {
-					this.selectedSprint = data.sprints[0];
+				this.sprints = data.sprints.filter((sprint: any) => sprint.name !== 'backlog');
+				if (this.sprints.length > 0) {
+					this.selectedSprint = this.sprints[0];
+					this.getStories(this.selectedSprint.name);
 				}
 			}
 		})
@@ -86,7 +78,7 @@ export class ActiveSprintsComponent {
 		})
 		dialog.afterClosed().subscribe({
 			next: (data) => {
-				this.getStories(this.selectedSprint.name);
+				if (data) this.getStories(this.selectedSprint.name);
 			}
 		})
 	}
@@ -96,8 +88,11 @@ export class ActiveSprintsComponent {
 			height: '600px'
 		});
 		dialog.afterClosed().subscribe({
-			next: (data) => {
-				this.getSprints();
+			next: async (data) => {
+				console.log(data);
+				if (data) {
+					this.getSprints();
+				}
 			}
 		})
 	}

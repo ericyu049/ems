@@ -30,7 +30,7 @@ export class AddSprintComponent implements OnInit {
 
         this.service.addSprint(request).subscribe({
             next: (data) => {
-                this.dialog.close();
+                this.dialog.close(true);
             }
         })
     }
