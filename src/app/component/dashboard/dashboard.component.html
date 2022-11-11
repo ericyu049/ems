@@ -1,0 +1,57 @@
+<div class="container column-align">
+    <mat-tab-group>
+        <mat-tab label="Quick Insight">
+            <div class="top row-align">
+                <div class="column-align" style="width: 50%;">
+                    <div class="section basic-info">
+                        <div class="column-align">
+                            <h2>Time</h2>
+                            <mat-divider></mat-divider>
+                            <div class="time-container">
+                                <div style="font-size: 24px; padding-bottom: 15px;">{{today | date: 'h:mm:ss a'}}</div>
+                                <div>{{today | date: 'EEEE, MMM dd, YYYY'}}</div>
+                            </div>
+                        </div>
+                        <div class="column-align" style="padding-top: 15px;">
+                            <h2>Vacations</h2>
+                            <mat-divider></mat-divider>
+                            
+                        </div>
+                    </div>
+                    <div class="section basic-info">
+                        <div class="column-align">
+                            <h2>Weather Report</h2>
+                            <mat-divider></mat-divider>
+                            <div class="weather-container">
+    
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+                
+                <div class="section tasks">
+                    <h3>Tasks Overview</h3>
+                    <mat-divider></mat-divider>
+                    <div class="column-align" style="justify-content: space-evenly">
+                        <div class="sub-section jiras">
+                            <h4>Jira Assigned</h4>
+                            5
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="bottom row-align">
+                <div class="section jira">
+                </div>
+            </div> -->
+        </mat-tab>
+        <mat-tab label="My Performance">
+
+        </mat-tab>
+        <mat-tab label="My Info">
+
+        </mat-tab>
+    </mat-tab-group>
+
+</div>
