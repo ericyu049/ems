@@ -5,6 +5,7 @@ import { Feedback } from "../model/feedback.model";
 import { Review } from "../model/review.model";
 import { Sprint } from "../model/sprint.model";
 import { Story } from "../model/story.model";
+import { openWeatherAPIKey } from '../../environments/secret';
 
 @Injectable()
 export class AppService {
@@ -83,7 +84,7 @@ export class AppService {
             lat,
             lon,
             units: 'imperial',
-            appid: '9b739b8ab99dd40a41eb2a13cb0e5d03'
+            appid: openWeatherAPIKey.key
         };
         const url = 'https://api.openweathermap.org/data/2.5/weather';
         return this.http.get(url, { params: params, reportProgress: true, responseType: 'json' });
