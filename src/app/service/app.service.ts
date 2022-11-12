@@ -44,6 +44,9 @@ export class AppService {
     getStories(params: any) {
         return this.http.get('/api/story', { params: params, reportProgress: true, responseType: 'json' });
     }
+    getStoriesByEmployee() {
+        return this.http.post('/api/story/getUserStory', { reportProgress: true, responseType: 'json' });
+    }
     updateStory(params: any) {
         return this.http.patch('/api/story', params, { reportProgress: true, responseType: 'json' });
     }
@@ -57,5 +60,32 @@ export class AppService {
 
     getProject() {
         return this.http.get('/api/project', { reportProgress: true, responseType: 'json' });
+    }
+    getAssignedReviews() {
+        return this.http.post('/api/review/getAssignedReviews', { reportProgres: true, responseType: 'json' });
+    }
+    getMyInfo() {
+        return this.http.post('/api/employee/myInfo', { reportProgress: true, responseType: 'json' });
+    }
+    getPosition(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resp => {
+                resolve({ lng: resp.coords.longitude, lat: resp.coords.latitude });
+            },
+                err => {
+                    reject(err);
+                });
+        });
+
+    }
+    getWeather(lat: string, lon: string) {
+        const params = {
+            lat,
+            lon,
+            units: 'imperial',
+            appid: '9b739b8ab99dd40a41eb2a13cb0e5d03'
+        };
+        const url = 'https://api.openweathermap.org/data/2.5/weather';
+        return this.http.get(url, { params: params, reportProgress: true, responseType: 'json' });
     }
 }

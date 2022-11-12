@@ -31,6 +31,7 @@ import { ProjectSettingComponent } from './component/project-setting/project-set
 import { LoginComponent } from './component/login/login.component';
 import { AuthService } from './service/auth.service';
 import { AuthGuardService } from './service/authguard.service';
+import { TempPipe } from './pipe/temp.pipe';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { AuthGuardService } from './service/authguard.service';
     ProjectDetailComponent,
     ProjectSettingComponent,
     StatusPipe,
-    PriorityPipe
+    PriorityPipe,
+    TempPipe
   ],
   imports: [
     BrowserModule,

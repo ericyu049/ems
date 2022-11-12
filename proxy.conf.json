@@ -7,5 +7,23 @@
         "pathRewrite": {
             "^/api": ""
         }
+    },
+    "/weather": {
+        "target": "https://api.openweathermap.org/data/2.5/weather",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/weather": ""
+        }
+    },
+    "/weather-icon": {
+        "target": "http://openweathermap.org/",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/weather": ""
+        }
     }
 }
