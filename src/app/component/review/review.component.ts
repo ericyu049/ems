@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { Employee } from "src/app/model/employee.model";
 import { Feedback } from "src/app/model/feedback.model";
 import { Review } from "src/app/model/review.model";
 import { AppService } from "src/app/service/app.service";
@@ -16,20 +17,28 @@ export class ReviewComponent implements OnInit {
     feedbackForm !: FormGroup;
     feedbacks !: Feedback[];
     doneLoading: boolean = false;
+    employee!: Employee;
     get isValid() { return this.feedbackForm.valid; }
     constructor(@Inject(MAT_DIALOG_DATA) public data: Review, private fb: FormBuilder, private service: AppService, public dialog: MatDialogRef<ReviewComponent>) {
 
     }
     ngOnInit(): void {
+        console.log(this.data);
+        this.service.getEmployee(this.data.targetId).subscribe({
+            next: (data: any) => {
+                this.employee = data.employee[0];
+                console.log('data: ', this.employee);
+                this.getFeedbacks();
+            }
+        })
         this.feedbackForm = this.fb.group({
             feedback: [null, [Validators.required]],
         });
-        this.getFeedbacks();
+
     }
     getFeedbacks() {
         this.service.getFeedbacks(this.data.rid).subscribe({
             next: (data: any) => {
-                console.log(data);
                 this.doneLoading = true;
                 this.feedbacks = data.feedbacks;
             }
@@ -56,7 +65,7 @@ export class ReviewComponent implements OnInit {
     }
     markComplete() {
         this.service.closeReview(this.data).subscribe({
-            next: (data)=> {
+            next: (data) => {
                 this.dialog.close(true);
             }
         })

@@ -5,6 +5,14 @@
             <div class="column-align" style="justify-content: space-between;">
                 <div class="index">
                     <div class="key">
+                        Target Employee
+                    </div>
+                    <div class="value" *ngIf="doneLoading">
+                        {{employee.name}}
+                    </div>
+                </div>
+                <div class="index">
+                    <div class="key">
                         ASSIGNED DATE
                     </div>
                     <div class="value">

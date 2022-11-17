@@ -1,37 +1,40 @@
 <div class="container column-align">
-    <mat-tab-group selectedIndex="1">
+    <mat-tab-group>
         <mat-tab label="Quick Insight">
             <div class="top row-align">
-                <div class="column-align" style="width: 50%;">
-                    <div class="section basic-info">
-                        <div class="column-align" style="padding-bottom: 15px;">
+                <div class="column-align" style="width: 50%; justify-content: space-evenly;">
+                    <div class="section basic-info column-align" style="justify-content: space-between">
+                        <div class="column-align" style="padding-bottom: 30px;">
                             <h2>Time</h2>
                             <mat-divider></mat-divider>
-                            <div class="row-align" style="width: 100%; justify-content: space-between">
+                            <div class="column-align" style="width: 100%; justify-content: space-between">
                                 <div class="time-container">
                                     <div style="font-size: 24px; padding-bottom: 15px;">
                                         {{today | date: 'h:mm:ss a'}}
                                     </div>
                                     <div>{{today | date: 'EEEE, MMM dd, YYYY'}}</div>
                                 </div>
-                                <div class="time-container">
-                                    <div style="font-size: 18px; padding-bottom: 15px;">
-                                        Hong Kong
+                                <div class="row-align">
+                                    <div class="time-container">
+                                        <div style="font-size: 18px; padding-bottom: 15px;">
+                                            Hong Kong
+                                        </div>
+                                        <div>{{today | date: 'h:mm a MMM dd':'UTC +8'}}</div>
                                     </div>
-                                    <div>{{today | date: 'h:mm a MMM dd':'UTC +8'}}</div>
-                                </div>
-                                <div class="time-container">
-                                    <div style="font-size: 18px; padding-bottom: 15px;">
-                                        Hawaii
+                                    <div class="time-container">
+                                        <div style="font-size: 18px; padding-bottom: 15px;">
+                                            Hawaii
+                                        </div>
+                                        <div>{{today | date: 'h:mm a MMM dd':'UTC -10'}}</div>
                                     </div>
-                                    <div>{{today | date: 'h:mm a MMM dd':'UTC -10'}}</div>
-                                </div>
-                                <div class="time-container">
-                                    <div style="font-size: 18px; padding-bottom: 15px;">
-                                        London
+                                    <div class="time-container">
+                                        <div style="font-size: 18px; padding-bottom: 15px;">
+                                            London
+                                        </div>
+                                        <div>{{today | date: 'h:mm a MMM dd':'UTC 0'}}</div>
                                     </div>
-                                    <div>{{today | date: 'h:mm a MMM dd':'UTC 0'}}</div>
                                 </div>
+
                             </div>
                         </div>
                         <div class="weather column-align">
@@ -53,31 +56,36 @@
                                         <span style="font-size: 14pt;">°F</span>
                                     </div>
                                     <div class="row-align"
-                                        style="font-size: 11pt; padding: 25px; justify-content: space-evenly; flex-grow: 1">
-                                        <div class="index">
-                                            <div class="key">
-                                                Max Temp
+                                        style="justify-content: space-evenly; font-size: 11pt; padding: 25px; flex-grow: 1;">
+                                        <div style="justify-content: space-evenly">
+                                            <div class="index">
+                                                <div class="key">
+                                                    Max Temp
+                                                </div>
+                                                {{weather.main.temp_max}}°F
                                             </div>
-                                            {{weather.main.temp_max}}°F
-                                        </div>
-                                        <div class="index">
-                                            <div class="key">
-                                                Min Temp
+                                            <div class="index">
+                                                <div class="key">
+                                                    Min Temp
+                                                </div>
+                                                {{weather.main.temp_min}}°F
                                             </div>
-                                            {{weather.main.temp_min}}°F
                                         </div>
-                                        <div class="index">
-                                            <div class="key">
-                                                Humidity
+                                        <div style="justify-content: space-evenly">
+                                            <div class="index">
+                                                <div class="key">
+                                                    Humidity
+                                                </div>
+                                                {{weather.main.humidity}}%
                                             </div>
-                                            {{weather.main.humidity}}%
-                                        </div>
-                                        <div class="index">
-                                            <div class="key">
-                                                Wind
+                                            <div class="index">
+                                                <div class="key">
+                                                    Wind
+                                                </div>
+                                                {{weather.wind.speed}} mph
                                             </div>
-                                            {{weather.wind.speed}} mph
                                         </div>
+
                                     </div>
                                 </div>
                             </div>

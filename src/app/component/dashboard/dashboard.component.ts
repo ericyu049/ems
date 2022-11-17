@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
-import { map, Observable, Subscription } from "rxjs";
+import { filter, map, Observable, Subscription } from "rxjs";
 import { Employee } from "src/app/model/employee.model";
 import { Review } from "src/app/model/review.model";
 import { AppService } from "src/app/service/app.service";
@@ -27,7 +27,9 @@ export class DashboardComponent implements OnInit {
     constructor(private service: AppService, public dialog:MatDialog) {
     }
     ngOnInit() {
-        this.stories$ = this.service.getStoriesByEmployee().pipe(map((response: any) => response.stories));
+        this.stories$ = this.service.getStoriesByEmployee().pipe(
+            map((response: any) => response.stories.filter((story:any) => story.status !== "completed"))
+        );
         this.service.getMyInfo().subscribe({
             next: (response: any) => {
                 this.myInfo = response.info;
