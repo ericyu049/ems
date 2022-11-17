@@ -2,7 +2,7 @@
     <h2 class="mat-title">New Employee</h2>
     <input type="file" class="file-input" accept="image/*" maxFileSize="50000" (change)="onFileSelected($event)" #fileUpload>
     <div class="file-upload" style="align-self: center;">
-        <img width="120" [src]="url" (click)="fileUpload.click()" style="cursor: pointer;">
+        <img width="120" [src]="url" style="cursor: pointer;">
     </div>
     <form class="column-align" style="margin-top: 25px; padding-bottom: 10px;" [formGroup]="addEmployeeForm" (ngSubmit)="addEmployee()">
         <mat-form-field appearance="outline">

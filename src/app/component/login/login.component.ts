@@ -12,6 +12,8 @@ import { AuthService } from "src/app/service/auth.service";
 export class LoginComponent {
     loginForm !: FormGroup;
     returnUrl: string | null | undefined;
+    errorMessage!: string;
+    get isValid() { return this.loginForm.valid; }
 
     constructor(private fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute, private authService:AuthService) { }
 
@@ -38,7 +40,10 @@ export class LoginComponent {
                     }
                 }
             },
-            error: (error: HttpErrorResponse) => console.log('error: ', error),
+            error: (error: HttpErrorResponse) => {
+                console.log('error: ', error);
+                this.errorMessage = 'Error: ' + error.error;
+            },
             complete: () => console.log('request completed')
         })
     }

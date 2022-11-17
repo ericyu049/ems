@@ -28,5 +28,15 @@ export class TopNavComponent implements OnInit{
         });
     }
     logout() {
+        this.authService.logout().subscribe({
+            next: (data: any) => {
+                if (data.rspCde === 0) {
+                    this.router.navigate(['/login']);
+                }
+            },
+            error: (error) => {
+                console.log(error);
+            }
+        })
     }
 }

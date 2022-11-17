@@ -15,7 +15,10 @@ export class AuthService {
     isAdmin() {
         return this.http.post('/api/auth/isAdmin', { reportProgress: true, responseType: "json" });
     }
-    refreshToken(){
+    refreshToken() {
         return this.http.post('/api/auth/refreshToken', { reportProgress: true, responseType: "json" });
+    }
+    logout() {
+        return this.http.post('/api/auth/logout', { reportProgress: true, responseType: 'json' });
     }
 }
