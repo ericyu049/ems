@@ -1,4 +1,4 @@
-FROM node:16.14.2
+FROM node:16.14.2-alpine
 
 # set working directory
 WORKDIR /app
@@ -15,4 +15,4 @@ RUN npm install -g @angular/cli
 COPY . /app
 
 # start app
-CMD ng serve --host 0.0.0.0 --disable-host-check true
+CMD ng serve --prod --host 0.0.0.0 --disable-host-check true
